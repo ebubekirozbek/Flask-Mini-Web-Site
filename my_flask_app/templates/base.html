@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flask App</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <style>
+        /* Fotoğrafın etrafındaki çerçeveyi ve boyutunu sabit tutmak için */
+        .photo-frame {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 70%; /* Oval şeklinde çerçeve oluşturur */
+            overflow: hidden; /* Çerçeve dışındaki kısımları keser */
+        }
+        .photo-frame img {
+            width: 190px; /* veya istediğiniz sabit boyut */
+            height: 190px; /* veya istediğiniz sabit boyut */
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-red-white" onmousemove="changeBackgroundColor(event)">
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="photo-frame">
+        <img src="{{ url_for('static', filename='images/Fotoğraf.jpg') }}" alt="My Photo">
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
